@@ -2,34 +2,28 @@
 
 public static class Day1Helper
 {
-    public static List<List<int>> GroupCalories(List<string> calories)
+    public static int Day1Part1(List<string> calories)
     {
-
-        var results = new List<List<int>>();
-        var group = new List<int>();
-        foreach (var caloric in calories)
-        {
-            if (string.IsNullOrWhiteSpace(caloric))
+        var groupedCalories = calories.Aggregate(new List<List<int>> { new() },
+            (list, value) =>
             {
-               results.Add(group);
-               group = new List<int>();
-               continue;
-            }
-            group.Add(int.Parse(caloric));
-        }
-        if(group.Any()) results.Add(group);
-
-        return results;
+                if (!string.IsNullOrWhiteSpace(value)) list.Last().Add(int.Parse(value));
+                else list.Add(new List<int>());
+                return list;
+            });
+        return groupedCalories.Select(g => g.Sum()).Max();
     }
 
-    public static int GetMaximumCalories(List<List<int>> foodGrouping)
+    public static int Day1Part2(List<string> calories)
     {
-        return foodGrouping.Select(g => g.Sum()).Max();
-    }
-
-    public static int GetTop3MaximumCaloriesCaches(List<List<int>> foodGrouping)
-    {
-        var calculatedSums = foodGrouping.Select(g => g.Sum()).ToList();
+        var groupedCalories = calories.Aggregate(new List<List<int>> { new() },
+            (list, value) =>
+            {
+                if (!string.IsNullOrWhiteSpace(value)) list.Last().Add(int.Parse(value));
+                else list.Add(new List<int>());
+                return list;
+            });
+        var calculatedSums = groupedCalories.Select(g => g.Sum()).ToList();
         calculatedSums.Sort();
         calculatedSums.Reverse();
         return calculatedSums.GetRange(0, 3).Sum();

@@ -25,11 +25,9 @@ public class Day1
         var testValues = File.ReadAllLines(Path.Combine(path, "Day1ExampleData.txt"));
         
         // Act
-        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
-        var results = Day1Helper.GetMaximumCalories(foodGrouping);
+        var results = Day1Helper.Day1Part1(testValues.ToList());
         
         // Assert
-        Assert.Equal(5, foodGrouping.Count);
         Assert.Equal(24000, results);
     }
 
@@ -41,8 +39,7 @@ public class Day1
         var testValues = File.ReadAllLines(Path.Combine(path, "Day1RealData.txt"));
         
         // Act
-        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
-        var results = Day1Helper.GetMaximumCalories(foodGrouping);
+        var results = Day1Helper.Day1Part1(testValues.ToList());
         
         // Show Results
         _testOutputHelper.WriteLine(results.ToString());
@@ -59,11 +56,9 @@ public class Day1
         var testValues = File.ReadAllLines(Path.Combine(path, "Day1ExampleData.txt"));
         
         // Act
-        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
-        var results = Day1Helper.GetTop3MaximumCaloriesCaches(foodGrouping);
+        var results = Day1Helper.Day1Part2(testValues.ToList());
         
         // Assert
-        Assert.Equal(5, foodGrouping.Count);
         Assert.Equal(45000, results);
     }
     
@@ -75,8 +70,7 @@ public class Day1
         var testValues = File.ReadAllLines(Path.Combine(path, "Day1RealData.txt"));
         
         // Act
-        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
-        var results = Day1Helper.GetTop3MaximumCaloriesCaches(foodGrouping);
+        var results = Day1Helper.Day1Part2(testValues.ToList());
         
         // Show Results
         _testOutputHelper.WriteLine(results.ToString());
