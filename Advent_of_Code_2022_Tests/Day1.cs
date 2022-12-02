@@ -1,0 +1,86 @@
+using System.IO;
+using System.Linq;
+using Advent_Of_Code_2022;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace Advent_of_Code_2022_Tests;
+
+public class Day1
+{
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public Day1(ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+    }
+
+    #region Part 1
+    
+    [Fact]
+    public void ShouldGetTheNumber24000()
+    {
+        // Arrange
+        var path = UsefulConstants.DataFilesPath;
+        var testValues = File.ReadAllLines(Path.Combine(path, "Day1ExampleData.txt"));
+        
+        // Act
+        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
+        var results = Day1Helper.GetMaximumCalories(foodGrouping);
+        
+        // Assert
+        Assert.Equal(5, foodGrouping.Count);
+        Assert.Equal(24000, results);
+    }
+
+    [Fact]
+    public void CalculateBiggestStoredFoodCache()
+    {
+        // Arrange
+        var path = UsefulConstants.DataFilesPath;
+        var testValues = File.ReadAllLines(Path.Combine(path, "Day1RealData.txt"));
+        
+        // Act
+        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
+        var results = Day1Helper.GetMaximumCalories(foodGrouping);
+        
+        // Show Results
+        _testOutputHelper.WriteLine(results.ToString());
+    }
+    #endregion
+
+    #region Part 2
+
+    [Fact]
+    public void ShouldGetTotal45000FromTop3()
+    {
+        // Arrange
+        var path = UsefulConstants.DataFilesPath;
+        var testValues = File.ReadAllLines(Path.Combine(path, "Day1ExampleData.txt"));
+        
+        // Act
+        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
+        var results = Day1Helper.GetTop3MaximumCaloriesCaches(foodGrouping);
+        
+        // Assert
+        Assert.Equal(5, foodGrouping.Count);
+        Assert.Equal(45000, results);
+    }
+    
+    [Fact]
+    public void GetTotalOfTop3CachesOfFood()
+    {
+        // Arrange
+        var path = UsefulConstants.DataFilesPath;
+        var testValues = File.ReadAllLines(Path.Combine(path, "Day1RealData.txt"));
+        
+        // Act
+        var foodGrouping = Day1Helper.GroupCalories(testValues.ToList());
+        var results = Day1Helper.GetTop3MaximumCaloriesCaches(foodGrouping);
+        
+        // Show Results
+        _testOutputHelper.WriteLine(results.ToString());
+    }
+    
+    #endregion
+}
