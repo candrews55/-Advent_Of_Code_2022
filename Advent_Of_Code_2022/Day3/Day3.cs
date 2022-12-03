@@ -11,12 +11,15 @@ public static class Day3
     {
         var duplicateItems = values.Select(i =>
         {
-            var firstCompartment = i.Substring(0, i.Length / 2).ToList();
-            var secondCompartment = i.Substring(i.Length / 2).ToList();
+            var firstCompartment = i[..(i.Length / 2)].ToList();
+            var secondCompartment = i[(i.Length / 2)..].ToList();
             var results = firstCompartment.Intersect(secondCompartment);
             return results.First();
         }).ToList();
-        return duplicateItems.Select(c => c >= 65 && c <= 90 ? c - UpperCaseSubtractBy : c - LowerCaseSubtract).Sum();
+        return duplicateItems.Select(c =>
+            c >= LowerBoundForUpperCaseChar && c <= UpperBoundForUpperCaseChar
+                ? c - UpperCaseSubtractBy
+                : c - LowerCaseSubtract).Sum();
     }
 
     public static int Part2(List<string> values)
@@ -27,14 +30,14 @@ public static class Day3
             list.Last().Add(v);
             return list;
         });
-        
+
         var badges = elvesGroupings.Select(e =>
         {
             var sameItems = e[0].Intersect(e[1]);
             var allSameItems = e[2].Intersect(sameItems);
             return allSameItems.First();
         }).ToList();
-        
+
         return badges.Select(b =>
             b >= LowerBoundForUpperCaseChar && b <= UpperBoundForUpperCaseChar
                 ? b - UpperCaseSubtractBy
