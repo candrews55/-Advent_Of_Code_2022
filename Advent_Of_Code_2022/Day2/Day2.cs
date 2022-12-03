@@ -11,8 +11,8 @@ public static class Day2
         });
         return plays.Select(p =>
         {
-            if (p.Item1 > p.Item2) return 0 + p.Item2.PlayValue;
-            return p.Item1 < p.Item2 ? 6 + p.Item2.PlayValue : 3 + p.Item2.PlayValue;
+            if ((int)p.Item1.Beats() == p.Item2.PlayValue) return p.Item2.PlayValue;
+            return (int)p.Item1.LosesTo() == p.Item2.PlayValue ? 6 + p.Item2.PlayValue : 3 + p.Item2.PlayValue;
         }).Sum();
     }
 

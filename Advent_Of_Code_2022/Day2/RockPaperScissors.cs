@@ -25,26 +25,6 @@ public class RockPaperScissors
         }
     }
 
-    public static bool operator <(RockPaperScissors left, RockPaperScissors right)
-    {
-        return (left._playersChoice == RockPaperScissorsEnum.Rock &&
-                right._playersChoice == RockPaperScissorsEnum.Paper) ||
-               (left._playersChoice == RockPaperScissorsEnum.Scissors &&
-                right._playersChoice == RockPaperScissorsEnum.Rock) ||
-               (left._playersChoice == RockPaperScissorsEnum.Paper &&
-                right._playersChoice == RockPaperScissorsEnum.Scissors);
-    }
-
-    public static bool operator >(RockPaperScissors left, RockPaperScissors right)
-    {
-        return (left._playersChoice == RockPaperScissorsEnum.Rock &&
-                right._playersChoice == RockPaperScissorsEnum.Scissors) ||
-               (left._playersChoice == RockPaperScissorsEnum.Scissors &&
-                right._playersChoice == RockPaperScissorsEnum.Paper) ||
-               (left._playersChoice == RockPaperScissorsEnum.Paper &&
-                right._playersChoice == RockPaperScissorsEnum.Rock);
-    }
-
     public RockPaperScissorsEnum Beats()
     {
         return _playersChoice switch
