@@ -44,4 +44,26 @@ public class RockPaperScissors
                (left._playersChoice == RockPaperScissorsEnum.Paper &&
                 right._playersChoice == RockPaperScissorsEnum.Rock);
     }
+
+    public RockPaperScissorsEnum Beats()
+    {
+        return _playersChoice switch
+        {
+            RockPaperScissorsEnum.Rock => RockPaperScissorsEnum.Scissors,
+            RockPaperScissorsEnum.Paper => RockPaperScissorsEnum.Rock,
+            RockPaperScissorsEnum.Scissors => RockPaperScissorsEnum.Paper,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
+    public RockPaperScissorsEnum LosesTo()
+    {
+        return _playersChoice switch
+        {
+            RockPaperScissorsEnum.Rock => RockPaperScissorsEnum.Paper,
+            RockPaperScissorsEnum.Paper => RockPaperScissorsEnum.Scissors,
+            RockPaperScissorsEnum.Scissors => RockPaperScissorsEnum.Rock,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
 }

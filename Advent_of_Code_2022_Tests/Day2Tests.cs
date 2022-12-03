@@ -47,35 +47,35 @@ public class Day2Tests
     }
     #endregion
 
-//     #region Part 2
-//
-//     [Fact]
-//     public void ShouldGetTotal45000FromTop3()
-//     {
-//         // Arrange
-//         var path = UsefulConstants.DataFilesPath;
-//         var testValues = File.ReadAllLines(Path.Combine(path, "Day1ExampleData.txt"));
-//         
-//         // Act
-//         var results = Day1Helper.Day1Part2(testValues.ToList());
-//         
-//         // Assert
-//         Assert.Equal(45000, results);
-//     }
-//     
-//     [Fact]
-//     public void GetTotalOfTop3CachesOfFood()
-//     {
-//         // Arrange
-//         var path = UsefulConstants.DataFilesPath;
-//         var testValues = File.ReadAllLines(Path.Combine(path, "Day1RealData.txt"));
-//         
-//         // Act
-//         var results = Day1Helper.Day1Part2(testValues.ToList());
-//         
-//         // Show Results
-//         _testOutputHelper.WriteLine(results.ToString());
-//     }
-//     
-//     #endregion
+     #region Part 2
+
+     [Fact]
+     public void ShouldGetAScoreOf12()
+     {
+         // Arrange
+         var path = UsefulConstants.DataFilesPath;
+         var testValues = File.ReadAllLines(Path.Combine(path, "Day2ExampleData.txt"));
+         
+         // Act
+         var results = Day2.Part2(testValues.ToList());
+         
+         // Assert
+         Assert.Equal(12, results);
+     }
+     
+     [Fact]
+     public void Day2Part2()
+     {
+         // Arrange
+         var path = UsefulConstants.DataFilesPath;
+         var testValues = File.ReadAllLines(Path.Combine(path, "Day2RealData.txt"));
+         
+         // Act
+         var results = Day2.Part2(testValues.ToList());
+         
+         // Show Results
+         _testOutputHelper.WriteLine(results.ToString());
+     }
+     
+     #endregion
 }
